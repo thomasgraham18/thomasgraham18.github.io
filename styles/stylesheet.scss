@@ -1,23 +1,26 @@
-
+:root {
+  --purple: #6f42c1;
+  --white: #f8f9fa;
+}
 
 body {
-    background-color: #0e1212;
+  background-color: #0e1212;
 }
 
 #bootstrap-overrides .active {
-    color: #6f42c1;
+  color: var(--purple);
 }
 
-.purple{
-    color: #6f42c1;
+.purple {
+  color: var(--purple);
 }
 
 .knlink {
- color: #f8f9fa;
- text-decoration: none;
+  color: var(--white);
+  text-decoration: none;
 }
 
 .setupLink {
-    color: #6f42c1;
-    text-decoration: none;
+  color: #6f42c1;
+  text-decoration: none;
 }
