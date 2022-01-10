@@ -1,4 +1,22 @@
 body {
-  background-color: #191919;
+  background-color: #0e1212;
+}
+
+#bootstrap-overrides .active {
+  color: #6f42c1;
+}
+
+.purple {
+  color: #6f42c1;
+}
+
+.knlink {
+  color: #f8f9fa;
+  text-decoration: none;
+}
+
+.setupLink {
+  color: #6f42c1;
+  text-decoration: none;
 }
 /*# sourceMappingURL=stylesheet.css.map */

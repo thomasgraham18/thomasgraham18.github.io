@@ -1,9 +1,23 @@
-body{
-    background-color: #191919;
+
+
+body {
+    background-color: #0e1212;
 }
 
+#bootstrap-overrides .active {
+    color: #6f42c1;
+}
 
+.purple{
+    color: #6f42c1;
+}
 
-@media only screen and (max-width: 5em) {
+.knlink {
+ color: #f8f9fa;
+ text-decoration: none;
+}
 
+.setupLink {
+    color: #6f42c1;
+    text-decoration: none;
 }
