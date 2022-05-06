@@ -1,8 +1,10 @@
-/*! `Custom` Bootstrap 5 theme */
+// Bootstrap base functions
+@import "../node_modules/bootstrap/scss/functions";
+
+// Custom imports and variables
 @import url(https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700);
 $headings-font-family:Montserrat;
-
 $primary:#6F42C1;
 $secondary:#6c757d;
 $success:#198754;
@@ -15,5 +17,23 @@ $spacer:1rem;
 $border-width:1px;
 $btn-border-radius:.25rem;
 
-// Boostrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+// Boostrap Modules
+// Configuration
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/utilities";
+
+// Layout & components
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+
+// Utilities
+@import "../node_modules/bootstrap/scss/utilities/api";
