@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,174 +6,577 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Banada</title>
+
   <link rel="stylesheet" href="/styles/stylesheet.css" />
+
   <link rel="apple-touch-icon" sizes="180x180" href="/../img/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/../img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/../img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/../img/favicon/site.webmanifest">
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    #knowledge {
+      max-width: 1000px;
+    }
+
+    .page-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .category {
+      margin-bottom: 3rem;
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .category-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .resource-list {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .resource {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background-color 0.15s ease, padding-left 0.15s ease;
+    }
+
+    .resource:last-child {
+      border-bottom: none;
+    }
+
+    .resource:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      padding-left: 1.5rem;
+    }
+
+    .resource-name {
+      font-weight: 500;
+    }
+
+    .resource-url {
+      font-size: 0.8rem;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    .resource-arrow {
+      color: #888;
+      font-size: 1.1rem;
+      transition: transform 0.15s ease;
+    }
+
+    .resource:hover .resource-arrow {
+      transform: translateX(4px);
+    }
+
+    .plex-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .plex-card a {
+      color: #6ea8fe;
+    }
+
+    .plex-card a:hover {
+      color: #9ec5fe;
+    }
+
+    .plex-step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .step-number {
+      min-width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #0d6efd;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      #knowledge {
+        width: 100% !important;
+      }
+
+      .resource-url {
+        display: none;
+      }
+
+      .resource {
+        padding: 0.9rem 1rem;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark text-white">
+
+  <!-- Navigation -->
   <div class="container">
     <nav class="navbar navbar-expand-md navbar-dark">
+
       <a href="#" class="navbar-brand">
-        <img src="/img/logo.png" alt="" width="40" height="40" class="d-inline-block align-top" id="logo" />
+        <img
+          src="/img/logo.png"
+          alt=""
+          width="40"
+          height="40"
+          class="d-inline-block align-top"
+          id="logo"
+        />
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
-        aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#toggleMobileMenu"
+        aria-controls="toggleMobileMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="toggleMobileMenu">
+
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="toggleMobileMenu"
+      >
         <ul class="navbar-nav">
-          <li><a href="../index" class="nav-link text-center">Home</a></li>
-          <li><a href="knowledge" class="nav-link text-center active">Knowledge</a></li>
-          <li><a href="#" class="nav-link text-center disabled">Portfolio</a></li>
-          <li><a href="contact" class="nav-link text-center">Contact</a></li>
+          <li>
+            <a href="../index" class="nav-link text-center">Home</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link text-center active">Knowledge</a>
+          </li>
+
+          <li>
+            <a href="contact" class="nav-link text-center">Contact</a>
+          </li>
         </ul>
       </div>
+
     </nav>
   </div>
 
-  <div id="knowledge" class="container w-50 py-3 my-5 text-white text-center">
+
+  <!-- Knowledge -->
+  <main id="knowledge" class="container py-5 my-3">
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1 class="fw-bold mb-2">Knowledge</h1>
+
+      <p class="text-secondary mb-0">
+        A collection of useful resources, tools, and services.
+      </p>
+    </header>
+
 
     <!-- Content -->
-    <p>
-      <button class="btn btn-primary fw-bold" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent">
-        Content
-      </button>
-    </p>
+    <section class="category">
 
-    <div class="collapse" id="collapseContent">
-      <div>
-        <p>
-          &nbsp;<a href="https://fmhy.net">Free Media Heck Yeah</a><br>
-          &nbsp;<a href="https://www.reddit.com/r/Piracy/wiki/megathread/">r/Piracy</a><br>
-          &nbsp;<a href="https://dabmusic.xyz/">DAB Music - Lossless Music</a><br>
-          &nbsp;<a href="https://www.cineby.sc/">Cineby - TV &amp; Movies</a><br>
-          &nbsp;<a href="https://streamed.pk/">Streamed - Sports</a><br>
-          &nbsp;<a href="https://a.111477.xyz/">a111147 - TV &amp; Movies</a><br>
-          &nbsp;<a href="https://ext.to/">ext.to - Download Aggregator</a><br>
-        </p>
+      <div class="category-title">
+        <span>Content</span>
       </div>
-    </div>
+
+      <div class="resource-list">
+
+        <a
+          href="https://fmhy.net"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">Free Media Heck Yeah</span>
+          <span class="resource-url">fmhy.net</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://www.reddit.com/r/Piracy/wiki/megathread/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">r/Piracy Megathread</span>
+          <span class="resource-url">reddit.com</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://dabmusic.xyz/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">DAB Music</span>
+          <span class="resource-url">Lossless Music</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://www.cineby.sc/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">Cineby</span>
+          <span class="resource-url">TV & Movies</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://streamed.pk/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">Streamed</span>
+          <span class="resource-url">Sports</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://a.111477.xyz/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">a111147</span>
+          <span class="resource-url">TV & Movies</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a
+          href="https://ext.to/"
+          target="_blank"
+          rel="noopener"
+          class="resource"
+        >
+          <span class="resource-name">EXT</span>
+          <span class="resource-url">Download Aggregator</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+      </div>
+    </section>
 
 
     <!-- Tools -->
-    <p>
-      <button class="btn btn-primary fw-bold" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
-        Tools
-      </button>
-    </p>
+    <section class="category">
 
-    <div class="collapse" id="collapseTools">
-      <div>
-        <p>
-          &nbsp;<a href="https://github.com/ChrisTitusTech/winutil">Chris Titus Tech WinUtil</a><br>
-          &nbsp;<a href="https://github.com/Blur009/Blur-AutoClicker">Blue Auto Clicker</a><br>
-          &nbsp;<a href="https://github.com/File-New-Project/EarTrumpet">EarTrumpet</a><br>
-          &nbsp;<a href="https://github.com/Rem0o/FanControl.Releases">FanControl</a><br>
-          &nbsp;<a href="https://github.com/res2k/HDRTray">HDRTray</a><br>
-          &nbsp;<a href="https://github.com/JonasNilson/idle_master_extended">Idle Master Extended</a><br>
-          &nbsp;<a href="https://github.com/mtkennerly/ludusavi">Ludusavi</a><br>
-          &nbsp;<a href="https://mullvad.net/en">Mullvad VPN</a><br>
-          &nbsp;<a href="https://github.com/massgravel/Microsoft-Activation-Scripts">Microsoft Activation Scripts</a><br>
-          &nbsp;<a href="https://github.com/Soundux/Soundux">Soundux</a><br>
-          &nbsp;<a href="https://github.com/gibbed/SteamAchievementManager">Steam Achievement Manager</a><br>
-          &nbsp;<a href="https://vencord.dev/">Vencord</a><br>
-          &nbsp;<a href="https://windhawk.net/">Windhawk</a><br>
-          &nbsp;<a href="https://diskanalyzer.com/download">WizTree</a><br>
-        </p>
+      <div class="category-title">
+        <span>Tools</span>
       </div>
-    </div>
+
+      <div class="resource-list">
+
+        <a href="https://github.com/ChrisTitusTech/winutil" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Chris Titus Tech WinUtil</span>
+          <span class="resource-url">Windows Utility</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/Blur009/Blur-AutoClicker" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Blur AutoClicker</span>
+          <span class="resource-url">Auto Clicker</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/File-New-Project/EarTrumpet" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">EarTrumpet</span>
+          <span class="resource-url">Audio Control</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/Rem0o/FanControl.Releases" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">FanControl</span>
+          <span class="resource-url">Fan Control</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/res2k/HDRTray" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">HDRTray</span>
+          <span class="resource-url">HDR Management</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/JonasNilson/idle_master_extended" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Idle Master Extended</span>
+          <span class="resource-url">Steam</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/mtkennerly/ludusavi" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Ludusavi</span>
+          <span class="resource-url">Game Save Backup</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://mullvad.net/en" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Mullvad VPN</span>
+          <span class="resource-url">VPN</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/massgravel/Microsoft-Activation-Scripts" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Microsoft Activation Scripts</span>
+          <span class="resource-url">GitHub</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/Soundux/Soundux" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Soundux</span>
+          <span class="resource-url">Soundboard</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/gibbed/SteamAchievementManager" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Steam Achievement Manager</span>
+          <span class="resource-url">Steam</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://vencord.dev/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Vencord</span>
+          <span class="resource-url">Discord</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://windhawk.net/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Windhawk</span>
+          <span class="resource-url">Windows Customization</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://diskanalyzer.com/download" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">WizTree</span>
+          <span class="resource-url">Disk Analyzer</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+      </div>
+    </section>
 
 
     <!-- Games -->
-    <p>
-      <button class="btn btn-primary fw-bold" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseGames" aria-expanded="false" aria-controls="collapseGames">
-        Games
-      </button>
-    </p>
+    <section class="category">
 
-    <div class="collapse" id="collapseGames">
-      <div>
-        <p>
-          &nbsp;<a href="https://cs.rin.ru/">CS.RIN.RU</a><br>
-          &nbsp;<a href="https://github.com/FroggMaster/CreamInstaller">CreamInstaller</a><br>
-          &nbsp;<a href="https://kemono.cr/posts?tag=assetto+corsa">Assetto Corsa Paid Mods</a><br>
-          &nbsp;<a href="https://github.com/Nuclearistt/TEKLauncher">TEK Launcher</a><br>
-          &nbsp;<a href="https://www.nexusmods.com/borderlands2/mods/50">Borderlands 2 Unofficial Community Patch</a><br>
-          &nbsp;<a href="https://github.com/ZakisM/bl3_save_edit">BL3 Save Editor</a><br>
-          &nbsp;<a href="https://www.allkeyshop.com/blog/">AllKeyShop</a><br>
-          &nbsp;<a href="https://playnite.link/">Playnite</a><br>
-          &nbsp;<a href="https://steamcommunity.com/workshop/filedetails/?id=3072542743">Terraria Mod List</a><br>
-          &nbsp;<a href="https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python">Forza Horizon DualSense Compat</a><br>
-          &nbsp;<a href="https://github.com/rainmakerv3/BB_Launcher">Bloodborne on PC</a><br>
-        </p>
+      <div class="category-title">
+        <span>Games</span>
       </div>
-    </div>
+
+      <div class="resource-list">
+
+        <a href="https://cs.rin.ru/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">CS.RIN.RU</span>
+          <span class="resource-url">Gaming Community</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/FroggMaster/CreamInstaller" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">CreamInstaller</span>
+          <span class="resource-url">Steam Tools</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://kemono.cr/posts?tag=assetto+corsa" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Assetto Corsa Paid Mods</span>
+          <span class="resource-url">Assetto Corsa</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/Nuclearistt/TEKLauncher" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">TEK Launcher</span>
+          <span class="resource-url">ARK</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://www.nexusmods.com/borderlands2/mods/50" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Borderlands 2 Unofficial Community Patch</span>
+          <span class="resource-url">Borderlands 2</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/ZakisM/bl3_save_edit" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">BL3 Save Editor</span>
+          <span class="resource-url">Borderlands 3</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://www.allkeyshop.com/blog/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">AllKeyShop</span>
+          <span class="resource-url">Game Keys</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://playnite.link/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Playnite</span>
+          <span class="resource-url">Game Launcher</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://steamcommunity.com/workshop/filedetails/?id=3072542743" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Terraria Mod List</span>
+          <span class="resource-url">Terraria</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Forza Horizon DualSense Compat</span>
+          <span class="resource-url">Forza Horizon</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/rainmakerv3/BB_Launcher" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Bloodborne on PC</span>
+          <span class="resource-url">Bloodborne</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+      </div>
+    </section>
 
 
     <!-- Plex -->
-    <p>
-      <button class="btn btn-primary fw-bold" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapsePlex" aria-expanded="false" aria-controls="collapsePlex">
-        Plex
-      </button>
-    </p>
+    <section class="category">
 
-    <div class="collapse" id="collapsePlex">
-      <div>
-        <p>
-          I am currently hosting my own Plex instance. Essentially, this is my own personal
-          “Netflix” that I host and add content to, which you can stream from pretty much any
-          device: phone, desktop, smart TV, console, etc.
-        </p>
-
-        <p>
-          Content is added in the highest quality available and is also available for download
-          for offline use.
-        </p>
-
-        <p>
-          <strong>To access the library:</strong><br><br>
-
-          1. Sign up for a Plex account:
-          <a href="https://www.plex.tv/en-ca/sign-up/">Plex Sign Up</a><br>
-
-          2. DM me your email or username and mention Plex.<br>
-
-          3. I will add you to the library.
-        </p>
-
-        <p>
-          Once you have access, you’re free to stream any available content.
-        </p>
-
-        <p>
-          <strong>
-            If you’d like to request content that isn’t currently available,
-            <a href="https://plexrequests.thomasg.ca">head to this link</a>.
-          </strong>
-        </p>
-
-        <p>
-          You can sign in with your Plex account and browse pretty much any series or movie,
-          then submit a request to have it added to the library. I’ll approve the request if
-          it’s able to be fulfilled.
-        </p>
+      <div class="category-title">
+        <span>Plex</span>
       </div>
-    </div>
+
+      <div class="plex-card p-4 p-md-5">
+
+        <h3 class="fw-semibold mb-3">
+          Personal Plex Library
+        </h3>
+
+        <p class="text-secondary">
+          I am currently hosting my own Plex instance. Essentially, this is my own
+          personal “Netflix” that I host and add content to, which you can stream
+          from pretty much any device: phone, desktop, smart TV, console, etc.
+        </p>
+
+        <p class="text-secondary">
+          Content is added in the highest quality available and is also available
+          for download for offline use.
+        </p>
+
+        <hr class="border-secondary my-4">
+
+        <h5 class="fw-semibold mb-4">
+          Getting access
+        </h5>
+
+        <div class="plex-step">
+          <div class="step-number">1</div>
+
+          <div>
+            <strong>Create a Plex account</strong>
+            <div class="text-secondary">
+              Sign up for a free account at
+              <a href="https://www.plex.tv/en-ca/sign-up/" target="_blank" rel="noopener">
+                Plex
+              </a>.
+            </div>
+          </div>
+        </div>
+
+        <div class="plex-step">
+          <div class="step-number">2</div>
+
+          <div>
+            <strong>Send me your username or email</strong>
+            <div class="text-secondary">
+              DM me your Plex username or email and mention Plex.
+            </div>
+          </div>
+        </div>
+
+        <div class="plex-step">
+          <div class="step-number">3</div>
+
+          <div>
+            <strong>Start watching</strong>
+            <div class="text-secondary">
+              I'll add you to the library and you'll have access to the available content.
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <p class="mb-0 text-secondary">
+          Looking for something that isn't currently available?
+          <a
+            href="https://plexrequests.thomasg.ca"
+            target="_blank"
+            rel="noopener"
+          >
+            Submit a request
+          </a>
+          and I'll approve it if it can be fulfilled.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous">
+  </script>
 
-  </div>
 </body>
-
 </html>
+```
