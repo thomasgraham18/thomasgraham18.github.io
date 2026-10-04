@@ -1,70 +1,583 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Banada</title>
-  <link rel="stylesheet" href="/styles/stylesheet.min.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/../img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/../img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/../img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/../img/favicon/site.webmanifest">
 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Thomas Graham</title>
+
+  <link rel="stylesheet" href="/styles/stylesheet.min.css" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/../img/favicon/apple-touch-icon.png" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/../img/favicon/favicon-32x32.png" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/../img/favicon/favicon-16x16.png" />
+
+  <link rel="manifest" href="/../img/favicon/site.webmanifest" />
+
+  <style>
+    :root {
+      --page-max: 980px;
+      --border: rgba(255, 255, 255, 0.1);
+      --muted: #8b949e;
+      --soft: rgba(255, 255, 255, 0.035);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      background: #0d0f12 !important;
+      color: #f2f3f5;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: var(--page-max);
+    }
+
+    .navbar {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-nav .nav-link {
+      color: #8f969f !important;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.8rem;
+      transition: color 0.2s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #fff !important;
+    }
+
+    .hero {
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-inner {
+      width: 100%;
+      padding: 90px 0 120px;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      color: #737b85;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1;
+    }
+
+    .hero h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.9;
+    }
+
+    .hero-role {
+      margin: 0;
+      color: #a2a8b0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 24px;
+      color: #666e78;
+      font-size: 0.85rem;
+    }
+
+    .hero-meta a {
+      color: #8e969f;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .hero-meta a:hover {
+      color: #fff;
+    }
+
+    .knowledge-section {
+      padding-bottom: 100px;
+    }
+
+    .page-header {
+      padding: 0 0 42px;
+      margin-bottom: 0;
+    }
+
+    .page-header h2 {
+      margin: 13px 0 8px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 850;
+      letter-spacing: -0.055em;
+    }
+
+    .category {
+      margin-bottom: 48px;
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .category-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .resource {
+      display: grid;
+      grid-template-columns: minmax(210px, 1fr) minmax(0, 2fr) 24px;
+      align-items: center;
+      gap: 20px;
+      min-height: 58px;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.018);
+      color: inherit;
+      text-decoration: none;
+      transition:
+        background 0.15s ease,
+        padding 0.15s ease;
+    }
+
+    .resource:hover {
+      background: var(--soft);
+      color: #fff;
+      padding-left: 22px;
+    }
+
+    .resource-name {
+      font-weight: 700;
+      color: #f1f2f4;
+    }
+
+    .resource-url {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .resource-arrow {
+      color: #666e78;
+      font-size: 1.1rem;
+      text-align: right;
+      transition:
+        transform 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .resource:hover .resource-arrow {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    .plex-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.018);
+    }
+
+    @media (max-width: 767.98px) {
+      .hero {
+        min-height: 470px;
+      }
+
+      .hero-inner {
+        padding: 70px 0 90px;
+      }
+
+      .resource {
+        grid-template-columns: 1fr 24px;
+        gap: 8px;
+      }
+
+      .resource-url {
+        grid-column: 1;
+        font-size: 0.8rem;
+      }
+
+      .resource-arrow {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-dark text-light">
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-inner text-center">
+        <div class="eyebrow">THOMAS GRAHAM</div>
+        <h1>Thomas Graham</h1>
+        <p class="hero-role">Elite 3E Application Consultant</p>
+        <div class="hero-meta">
+          <a href="tel:+15064350057">(1) 506 435 0057</a>
+          <span aria-hidden="true">/</span>
+          <a href="mailto:thomas.graham18@outlook.com">thomas.graham18@outlook.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Navigation -->
-  <div class="container">
-    <nav class="navbar navbar-expand-md navbar-dark">
+  <!-- Knowledge -->
+  <section id="knowledge" class="knowledge-section container">
+    <header class="page-header">
+      <div class="section-kicker">KNOWLEDGE</div>
+      <h2>Useful stuff.</h2>
+      <p class="text-secondary mb-0">
+        A collection of useful resources, tools, and services.
+      </p>
+    </header>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
-        aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-center" id="toggleMobileMenu">
-        <ul class="navbar-nav">
-          <li>
-            <a href="../index" class="nav-link text-center active">Home</a>
-          </li>
-
-          <li>
-            <a href="knowledge" class="nav-link text-center">Knowledge</a>
-          </li>
-
-          <li>
-            <a href="https://plexrequests.thomasg.ca/" class="nav-link text-center">Plex Requests</a>
-          </li>
-        </ul>
+    <section class="category">
+      <div class="category-title">
+        <span>Content</span>
       </div>
 
-    </nav>
-  </div>
+      <div class="resource-list">
+        <a href="https\://fmhy.net" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">⭐ Free Media Heck Yeah</span>
+          <span class="resource-url">Ultimate guide to piracy</span>
+          <span class="resource-arrow">→</span>
+        </a>
 
-  <div class=" text-light container-sm">
-    <div class="row m-5 p-4">
-      <div class="container text-center">
-        <a href="https://github.com/thomasgraham18"><img height="120em"
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" /></a><br><br><br>
+        <a href="https\://www.reddit.com/r/Piracy/wiki/megathread/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">r/Piracy Megathread</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
 
-        <div class="text-center container my-2">
-          <a href="https://github.com/thomasgraham18">
-            <img height="120em"
-              src="https://github-readme-stats.vercel.app/api?username=thomasgraham18&show_icons=true&theme=discord_old_blurple&include_all_commits=true&count_private=true" />
-            <img height="120em"
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=thomasgraham18&layout=compact&langs_count=7&theme=discord_old_blurple" />
+        <a href="https\://dabmusic.xyz/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">DAB Music</span>
+          <span class="resource-url">Lossless music direct download and stream</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://streamed.pk/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Streamed</span>
+          <span class="resource-url">Premium sports streams</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://a.111477.xyz/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">a111147</span>
+          <span class="resource-url">TV & Movies direct download</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://ext.to/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">EXT</span>
+          <span class="resource-url">TV & movies download aggregator</span>
+          <span class="resource-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Tools -->
+
+    <section class="category">
+      <div class="category-title">
+        <span>Tools</span>
+      </div>
+
+      <div class="resource-list">
+        <a href="https\://github.com/ChrisTitusTech/winutil" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">⭐ Chris Titus Tech WinUtil</span>
+
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/Blur009/Blur-AutoClicker" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Blur AutoClicker</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/File-New-Project/EarTrumpet" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">EarTrumpet</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/Rem0o/FanControl.Releases" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">FanControl</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/res2k/HDRTray" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">HDRTray</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/JonasNilson/idle_master_extended" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Idle Master Extended</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/mtkennerly/ludusavi" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Ludusavi</span>
+          <span class="resource-url">Game save backup</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://mullvad.net/en" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Mullvad VPN</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/massgravel/Microsoft-Activation-Scripts" target="_blank" rel="noopener"
+          class="resource">
+          <span class="resource-name">⭐ Microsoft Activation Scripts</span>
+          <span class="resource-url">Active Windows and Office for free</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/Soundux/Soundux" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Soundux</span>
+          <span class="resource-url">Soundboard</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/gibbed/SteamAchievementManager" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Steam Achievement Manager</span>
+          <span class="resource-url">Unlock any and all steam achievments</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://vencord.dev/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Vencord</span>
+          <span class="resource-url">Custom Discord client with themes and plugins</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://windhawk.net/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">⭐ Windhawk</span>
+          <span class="resource-url">Windows customization</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://diskanalyzer.com/download" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">WizTree</span>
+          <span class="resource-url">Disk analyzer</span>
+          <span class="resource-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Games -->
+
+    <section class="category">
+      <div class="category-title">
+        <span>Games</span>
+      </div>
+
+      <div class="resource-list">
+        <a href="https\://cs.rin.ru/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">⭐CS.RIN.RU</span>
+          <span class="resource-url">Gaming torrents and cracks</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/FroggMaster/CreamInstaller" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">CreamInstaller</span>
+          <span class="resource-url">Unlock Steam DLC for free</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://kemono.cr/posts?tag=assetto+corsa" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Assetto Corsa Paid Mods</span>
+          <span class="resource-url">Paid mods for free</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/Nuclearistt/TEKLauncher" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">TEK Launcher</span>
+          <span class="resource-url">ARK SA & SE Launcher, download & crack</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://www.nexusmods.com/borderlands2/mods/50" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Borderlands 2 Unofficial Community Patch</span>
+          <span class="resource-url">Borderlands 2</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/ZakisM/bl3_save_edit" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">BL3 Save Editor</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://www.allkeyshop.com/blog/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">AllKeyShop</span>
+          <span class="resource-url">Game key shop aggregator</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://playnite.link/" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Playnite</span>
+          <span class="resource-url">Game Launcher</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://steamcommunity.com/workshop/filedetails/?id=3072542743" target="_blank" rel="noopener"
+          class="resource">
+          <span class="resource-name">Terraria Mod List</span>
+          <span class="resource-url">Personal Terraria mod list</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python" target="_blank" rel="noopener"
+          class="resource">
+          <span class="resource-name">Forza Horizon DualSense Compat</span>
+          <span class="resource-url">PS5 FH controller support</span>
+          <span class="resource-arrow">→</span>
+        </a>
+
+        <a href="https\://github.com/rainmakerv3/BB_Launcher" target="_blank" rel="noopener" class="resource">
+          <span class="resource-name">Bloodborne on PC</span>
+          <span class="resource-url"></span>
+          <span class="resource-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Plex -->
+
+    <section class="category">
+      <div class="category-title">
+        <span>Plex</span>
+      </div>
+
+      <div class="plex-card p-4 p-md-5">
+        <h3 class="fw-semibold mb-3">Personal Plex Library</h3>
+
+        <p class="text-secondary">
+          I am currently hosting my own Plex instance. Essentially, this is my
+          own personal “Netflix” that I host and add content to, which you can
+          stream from pretty much any device: phone, desktop, smart TV,
+          console, etc.
+        </p>
+
+        <p class="text-secondary">
+          Content is added in the highest quality available and is also
+          available for download for offline use.
+        </p>
+
+        <hr class="border-secondary my-4" />
+
+        <h5 class="fw-semibold mb-4">Getting access</h5>
+
+        <div class="plex-step">
+          <div class="step-number">1</div>
+
+          <div>
+            <strong>Create a Plex account</strong>
+
+            <div class="text-secondary">
+              Sign up for a free account at
+              <a href="https\://www.plex.tv/en-ca/sign-up/" target="_blank" rel="noopener">
+                Plex </a>.
+            </div>
+          </div>
+        </div>
+
+        <div class="plex-step">
+          <div class="step-number">2</div>
+
+          <div>
+            <strong>Send me your username or email</strong>
+
+            <div class="text-secondary">
+              DM me your Plex username or email and mention Plex.
+            </div>
+          </div>
+        </div>
+
+        <div class="plex-step">
+          <div class="step-number">3</div>
+
+          <div>
+            <strong>Start watching</strong>
+
+            <div class="text-secondary">
+              I'll add you to the library and you'll have access to the
+              available content.
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-secondary my-4" />
+
+        <p class="mb-0 text-secondary">
+          Looking for something that isn't currently available?
+          <a href="https\://plexrequests.thomasg.ca" target="_blank" rel="noopener">
+            Submit a request
           </a>
-        </div><br><br><br><br>
+
+          and I'll approve it if it can be fulfilled.
+        </p>
       </div>
-    </div>
+    </section>
+  </section>
+  <!-- /.knowledge-section -->
 
-  </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  <script src="https\://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 </body>
